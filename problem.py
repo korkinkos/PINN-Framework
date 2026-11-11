@@ -15,3 +15,9 @@ class Problem:
                 f"Duplicate constraint: {constraint.name}"
             )
         self.constraints[constraint.name] = constraint
+
+    def sample_points(self, n_points: int):
+        return {
+            name: constraint.sampler.sample(n_points)
+            for name, constraint in self.constraints.items()
+        }
